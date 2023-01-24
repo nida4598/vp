@@ -139,7 +139,7 @@ const Quiz = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Beck Anxiety Inventory Quiz</h1>
       <form>
         {questions.map((question, index) => (
@@ -149,7 +149,7 @@ const Quiz = () => {
               {question.options.map((option, i) => (
                 <div key={i}>
                   <input
-                    type="radio"
+                    type="checkbox"
                     name={index + 1}
                     value={option}
                     onChange={handleAnswerChange}
@@ -162,7 +162,7 @@ const Quiz = () => {
           </div>
         ))}
       </form>
-      <button onClick={handleSubmit}>Submit</button>
+      <button className="btn" onClick={handleSubmit}>Submit</button>
       {showResult && <p>Your total score is {totalScore}.</p>}
     </div>
   );
