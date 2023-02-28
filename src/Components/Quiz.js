@@ -1,12 +1,40 @@
 import React, { useState } from "react";
 import { useRef } from "react";
-import './Quiz.css';
+import "./Quiz.css";
+import { useEffect } from "react";
+import MyModal from "./ShowModal";
 
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
   const [showResult, setShowResult] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
+  const MyModal = ({ closeModal }) => {
+    useEffect(() => {
+      document.body.style.overflowY = "scroll";
+      return () => {
+        document.body.style.overflowY = "scroll";
+      };
+    }, []);
+    return (
+      <>
+        <div className="modal-wrapper" onClick={closeModal}>
+          <div className="modal-container">
+            <h2>Stay Tuned.</h2>
+            <p>Your total score is {totalScore}.</p>
+            <p>Subscribe</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  {
+    /*close modal function*/
+  }
+  const closeModal = () => setShowModal(false);
   const questions = [
     {
       id: 1,
@@ -136,34 +164,45 @@ const Quiz = () => {
     }
     setTotalScore(score);
     setShowResult(true);
+    setShowModal(true);
   };
 
   return (
-    <div className="container">
-      <h1>Beck Anxiety Inventory Quiz</h1>
-      <form>
-        {questions.map((question, index) => (
-          <div key={index}>
-            <p className="questions-container">{question.id}.{question.text}</p>
-            <div className="options-container">
-              {question.options.map((option, i) => (
-                <div key={i}>
-                  <input
-                    type="checkbox"
-                    name={index + 1}
-                    value={option}
-                    onChange={handleAnswerChange}
-                  />
-                  <label>{option}</label>
-                  <hr />
-                </div>
-              ))}
+    <div className="body">
+      <div className="container">
+        <h1>Beck Anxiety Inventory Quiz</h1>
+        <form>
+          {questions.map((question, index) => (
+            <div key={index}>
+              <p className="questions-container">
+                {question.id}.{question.text}
+              </p>
+              <div className="options-container">
+                {question.options.map((option, i) => (
+                  <div key={i}>
+                    <input
+                      type="radio"
+                      name={index + 1}
+                      value={option}
+                      onChange={handleAnswerChange}
+                    />
+                    <label>{option}</label>
+                    <hr className="quiz-hr" />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </form>
-      <button className="btn" onClick={handleSubmit}>Submit</button>
-      {showResult && <p>Your total score is {totalScore}.</p>}
+          ))}
+        </form>
+        <button className="btn" onClick={handleSubmit}>
+          Submit
+        </button>
+        {showModal && showResult && (
+          <>
+            <MyModal closeModal={closeModal} />
+          </>
+        )}
+      </div>
     </div>
   );
 };

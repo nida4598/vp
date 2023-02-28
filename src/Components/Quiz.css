@@ -1,9 +1,44 @@
+.body {
+    background-color: rgb(78, 76, 76);
+}
 .container {
-    margin-left: 400px;
-    border: 10px;
+    border: 5px solid rgb(168, 162, 162);;
+    background-color: rgb(240, 232, 232); 
+    box-shadow: 0px 100px black;
+    width: 530px;
+    transform: translate(80%,0);
+}
+.container h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.quiz-hr {
+  border-top: 1px solid rgb(20, 20, 20); 
+  margin: 20px 1px 5px 5px;
+  width: 124px;
 }
 .btn {
-    background-color: green;
+    background-color: white;
+    width: 150px;
+    text-align: center;
+    margin-right: 500px;
+    margin-left: 200px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 3px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+    
+}
+
+.btn:hover {background-color: black;
+    color: white;
+    border-color: rgb(145, 42, 42);
+    border: 5px solid purple;
 }
 .options-container {
     display: flex ;
@@ -11,4 +46,26 @@
 }
 .questions-container {
     text-indent: 10px;
+}
+.modal-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgb(189, 189, 189);
+    opacity: 0.95;
+}
+.modal-container {
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    font-size: 20px;
+    border-radius: 0.5rem;
+    padding: 10px;
+    margin: 10px 10px 500px 10px;
+    width: 500px;
+    
 }
