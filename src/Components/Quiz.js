@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { useRef } from "react";
 import "./Quiz.css";
 import { useEffect } from "react";
-import MyModal from "./ShowModal";
 
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
@@ -31,9 +29,7 @@ const Quiz = () => {
     );
   };
 
-  {
-    /*close modal function*/
-  }
+
   const closeModal = () => setShowModal(false);
   const questions = [
     {
@@ -147,9 +143,9 @@ const Quiz = () => {
     const { name, value } = event.target;
     setAnswers({ ...answers, [name]: value });
   };
-  const radioButtonsRef = useRef([]);
+
   const handleSubmit = () => {
-    let score = 0;
+  let score = 0;
     for (let i = 0; i < questions.length; i++) {
       let selectedOption = answers[i + 1];
       if (selectedOption === "Severely") {
@@ -161,12 +157,13 @@ const Quiz = () => {
       } else if (selectedOption === "Not at all") {
         score = score + 0;
       }
-    }
+  }
     setTotalScore(score);
     setShowResult(true);
     setShowModal(true);
   };
 
+  
   return (
     <div className="body">
       <div className="container">
