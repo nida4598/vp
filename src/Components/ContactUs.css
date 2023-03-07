@@ -2,8 +2,11 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 50px;
+    margin-left: 500px;
   }
-  
+  h1 {
+    text-align: center;
+  }
   .contact-us-container h1 {
     font-size: 2rem;
     text-align: center;
@@ -28,7 +31,9 @@
     border: 1px solid #ccc;
     font-size: 1rem;
   }
-  
+  #message {
+    height: 100px;
+  }
   .contact-us-container input:focus,
   .contact-us-container textarea:focus {
     outline: none;
